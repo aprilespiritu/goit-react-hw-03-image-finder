@@ -1,4 +1,4 @@
-.button {
+.Button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #2ee9d0;
@@ -12,14 +12,14 @@
     margin: 0 auto;
 }
 
-.button:hover,
-.button:focus {
+.Button:hover,
+.Button:focus {
     background-color: #f0f8ff;
     color: #000;
     transform: scale(1.05);
     border: 2px solid #2ee9d0;
 }
 
-.button:active {
+.Button:active {
     transform: scale(0.95);
 }
