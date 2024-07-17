@@ -5,6 +5,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import { getAPI } from 'pixabay-api';
 import css from './App.module.css';
 import toast, { Toaster } from 'react-hot-toast';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 class App extends Component {
   state = {
@@ -79,6 +80,48 @@ class App extends Component {
   handleSearchSubmit = query => {
     const normalizedQuery = query.trim().toLowerCase();
     const normalizedCurrentQuery = this.state.searchQuery.toLowerCase();
+
+    //Check if searchbar is empty
+    if (normalizedQuery === '') {
+      Notify.failure(`Invalid search. Please try again.`);
+      return;
+    }
+
+    //Prevent duplicate search
+    if (normalizedQuery === normalizedCurrentQuery) {
+      Notify.failure(`Search query is the same. Please try again.`);
+      return;
+    }
+
+    //New search
+    if (normalizedQuery !== normalizedCurrentQuery) {
+      this.setState({
+        searchQuery: normalizedQuery,
+        currentPage: 1,
+        images: [],
+        isEnd: false,
+      });
+    }
+  };
+
+  handleLoadMore = () => {
+    //Load more images
+    if (!this.state.isEnd) {
+      this.setState(prevState => ({ currenPage: prevState.currenPage + 1 }));
+    } else {
+      Notify.warning("You've reached the end of the search results.");
+    }
+  };
+
+  render() {
+    const { images, isLoading, isError, isEnd } = this.state;
+    return (
+      <div className={css.App}>
+        <Searchbar onSubmit={this.handleSearchSubmit} />
+        <ImageGallery images={images} />
+        {isLoading && }
+      </div>
+    )
   }
 
 
