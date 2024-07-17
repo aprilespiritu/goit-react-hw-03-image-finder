@@ -13,7 +13,7 @@ class ImageGalleryItem extends Component {
     };
 
     state = {
-        showModal: false;
+        showModal: false,
     };
 
     componentDidUpdate(prevProps, prevState) {

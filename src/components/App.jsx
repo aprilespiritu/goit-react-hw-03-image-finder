@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
-
+import Button from './Button/Button';
+import Loader from './Loader/Loader';
 import { getAPI } from 'pixabay-api';
 import css from './App.module.css';
 import toast, { Toaster } from 'react-hot-toast';
@@ -40,7 +41,7 @@ class App extends Component {
 
       //Checks if API returns images for the search query
       if (hits.length === 0) {
-        toast.error(Sorry, there are no images found.Please try again.');
+        toast.error('Sorry, there are no images found.Please try again.');
         this.setState({ isLoading: false });
         return;
       }
@@ -119,10 +120,15 @@ class App extends Component {
       <div className={css.App}>
         <Searchbar onSubmit={this.handleSearchSubmit} />
         <ImageGallery images={images} />
-        {isLoading && }
+        {isLoading && <Loader />}
+        {!isLoading && isError && images.length > 0 && !isEnd && (
+          <Button onClick={this.handleLoadMore} />
+        )}
+        {isError && <p>Something went wrong. Please try again.</p>}
+        <Toaster position="top-right" reverseOrder={false} />
       </div>
-    )
+    );
   }
-
-
 }
+
+export default App;

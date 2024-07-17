@@ -9,5 +9,20 @@
 }
 
 .galleryItem img {
-    dis
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: tranform 0.3s ease;
+    overflow: hidden;
+}
+
+.galleryItem:hover {
+    transform: translate(-5px);
+    box-shadow: 0 10px 15px rgba( 0, 0, 0, 0.2);
+}
+
+.galleryItem:hover img {
+    transform: scale(1.05);
 }
