@@ -16,7 +16,7 @@ class ImageGalleryItem extends Component {
         showModal: false,
     };
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(_prevProps, prevState) {
         if (prevState.showModal !== this.state.showModal) {
             const gallery = document.querySelector('.js-gallery');
             if (!gallery) {

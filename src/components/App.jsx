@@ -120,9 +120,7 @@ class App extends Component {
         <Searchbar onSubmit={this.handleSearchSubmit} />
         <ImageGallery images={images} />
         {isLoading && <Loader />}
-        {!isLoading && isError && images.length > 0 && !isEnd && (
-          <Button onClick={this.handleLoadMore} />
-        )}
+        {!isLoading && isError && images.length > 0 && !isEnd && (<Button onClick={this.handleLoadMore} />)}
         {isError && <p>Something went wrong. Please try again.</p>}
         <Toaster position="top-right" reverseOrder={false} />
       </div>
