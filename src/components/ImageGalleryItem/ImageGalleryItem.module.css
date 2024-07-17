@@ -1,0 +1,13 @@
+.galleryItem {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba( 0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 20%;
+    height: 24vh;
+}
+
+.galleryItem img {
+    dis
+}
