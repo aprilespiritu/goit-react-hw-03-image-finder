@@ -5,7 +5,7 @@ import css from './Loader.module.css';
 class Loader extends Component {
     render() {
         return (
-            <div className={css.loader}>
+            <div className={css.Loader}>
                 <div className={css.loaderBox}>
                     <TailSpin color="#00bfff" height={80} width={80} />
                 </div>

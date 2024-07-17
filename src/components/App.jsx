@@ -6,7 +6,6 @@ import Loader from './Loader/Loader';
 import { getAPI } from 'pixabay-api';
 import css from './App.module.css';
 import toast, { Toaster } from 'react-hot-toast';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 class App extends Component {
   state = {
@@ -84,13 +83,13 @@ class App extends Component {
 
     //Check if searchbar is empty
     if (normalizedQuery === '') {
-      Notify.failure(`Invalid search. Please try again.`);
+      alert(`Invalid search. Please try again.`);
       return;
     }
 
     //Prevent duplicate search
     if (normalizedQuery === normalizedCurrentQuery) {
-      Notify.failure(`Search query is the same. Please try again.`);
+      alert(`Search query is the same. Please try again.`);
       return;
     }
 
@@ -108,9 +107,9 @@ class App extends Component {
   handleLoadMore = () => {
     //Load more images
     if (!this.state.isEnd) {
-      this.setState(prevState => ({ currenPage: prevState.currenPage + 1 }));
+      this.setState(prevState => ({ currentPage: prevState.currentPage + 1 }));
     } else {
-      Notify.warning("You've reached the end of the search results.");
+      alert("You've reached the end of the search results.");
     }
   };
 
@@ -131,4 +130,4 @@ class App extends Component {
   }
 }
 
-//export default App;
+export default App;
